@@ -8,9 +8,3 @@ En este trabajo vamos a realizar el codigo de dos algoritmos diferentes.
 En ambos casos se mide el tiempo que se tarda el realizar la suma, dados lo resultado podemos apreciar una gráfica que nos muestra la aceleración respecto al tamaño de los vectores, la cual va creciendo a medida
 que aumenta el tamaño.
 
-En el siguiente enlace podemos observar la tabla de datos obtenidos: 
-[tabla de datos obtenidos](https://docs.google.com/spreadsheets/d/1hzlGXc0NErNkQrIFzfnTtUfpj7A26vMDnzPEmBsz6lk/edit#gid=0)
-
-Gráfica de aceleración:
-![Grafica](/images/aceleracion.png)
-Format: ![Grafica](https://drive.google.com/open?id=0B1fsAESJqNU-SWFONU9wUWw5UXM)
