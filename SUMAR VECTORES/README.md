@@ -13,4 +13,4 @@ En el siguiente enlace podemos observar la tabla de datos obtenidos:
 
 Gráfica de aceleración:
 ![Grafica](/images/aceleracion.png)
-Format: ![Alt Text](url)
+Format: ![Grafica](https://drive.google.com/open?id=0B1fsAESJqNU-SWFONU9wUWw5UXM)
