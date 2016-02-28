@@ -11,3 +11,5 @@ que aumenta el tamaño.
 En el siguiente enlace podemos observar la tabla de datos obtenidos: 
 [tabla de datos obtenidos](https://docs.google.com/spreadsheets/d/1hzlGXc0NErNkQrIFzfnTtUfpj7A26vMDnzPEmBsz6lk/edit#gid=0)
 
+![Aceleracion](https://github.com/anvajaramillo/HPC/blob/master/SUMAR%20VECTORES/aceleracion.PNG)
+
