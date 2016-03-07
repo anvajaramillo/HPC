@@ -39,8 +39,8 @@ int main ()
 	cudaMalloc((void **) &d_z,n * sizeof(int));
 	
 	//inicializar valores de hilos y bloques
-	float blockSize = 1024.0;
-	float threadSize = ceil(n/blockSize);
+	float dimBlock = 1024.0;  			//cantidad de hilos (dimendion del bloque)
+	float dimGrid = ceil(n/dimBlock);		//cantidad de bloques (dimensión de la grilla)
 	
 	clock_t start = clock(); 
 	
@@ -50,7 +50,7 @@ int main ()
 	
 	//ejecución del kernel un bloque de n hilos
 	
-	sumarVectores<<<blockSize,threadSize>>>(d_x,d_y,d_z);
+	sumarVectores<<<dimGrid,dimBlock>>>(d_x,d_y,d_z);
 	
 	//copia de datos desde el device al host
 	cudaMemcpy(total_suma, d_z, n * sizeof(int), cudaMemcpyDeviceToHost);
