@@ -47,32 +47,35 @@ int main ()
 
     llenarMatriz(matriz1);
     llenarMatriz(matriz2);
+    
+    clock_t start = clock();
     multiplicarMatrices(matriz1,matriz2,total_mul);
+    printf("Tiempo transcurrido: %f", ((double)clock() - start) / CLOCKS_PER_SEC);
 
-    for (i=0;i<row;i=i+1)
-    {
-        printf("\n");
-        for (j=0;j<col;j=j+1)
-            printf("\t%d", matriz1[i*col+j] );
-    }
+    //for (i=0;i<row;i=i+1)
+    //{
+    //    printf("\n");
+    //    for (j=0;j<col;j=j+1)
+    //        printf("\t%d", matriz1[i*col+j] );
+    //}
 
-    printf("\n");
+    //printf("\n");
 
-    for (i=0;i<row;i=i+1)
-    {
-        printf("\n");
-        for (j=0;j<col;j=j+1)
-            printf("\t%d", matriz2[i*col+j] );
-    }
+    //for (i=0;i<row;i=i+1)
+    //{
+    //    printf("\n");
+    //    for (j=0;j<col;j=j+1)
+    //        printf("\t%d", matriz2[i*col+j] );
+    //}
 
-    printf("\n");
+    //printf("\n");
 
-    for (i=0;i<row;i=i+1)
-    {
-        printf("\n");
-        for (j=0;j<col;j=j+1)
-            printf("\t%d", total_mul[i*col+j] );
-    }
+    //for (i=0;i<row;i=i+1)
+    //{
+    //    printf("\n");
+    //    for (j=0;j<col;j=j+1)
+    //        printf("\t%d", total_mul[i*col+j] );
+    //}
 
     // liberamos memoria
     free (matriz1);
