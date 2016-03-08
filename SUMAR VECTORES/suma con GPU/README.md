@@ -8,5 +8,5 @@ Inicializamos el tamaño de cada bloque en 1024 y calculamos cuantos bloques nec
 
 Inicializamos el medidor de tiempo y copiamos los datos de la CPU a la GPU, y llamamos al kerner sumar, el resultado almacenado en la GPU se copia a la CPU, cuando se haya completado el procedimiento mostramos en pantalla el tiempo que tardó en realizar la operación.
 
-Estos datos se utilizan para realizar la fórmula de aceleración c=ts/tp, donde tp es el valor que toma la GPU en realizar la ejecución de la suma.
+Estos datos se utilizan para realizar la fórmula de aceleración x=ts/tp, donde tp es el valor que toma la GPU en realizar la ejecución de la suma.
 
