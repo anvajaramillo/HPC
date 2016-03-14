@@ -26,8 +26,13 @@ __global__ void multiplicarMatrices(int *matriz1, int *matriz2, int *mul){
 	__shared__ int Mds[TILE_WIDTH][TILE_WIDTH];							//se establecen las submatrices y quedan en memoria compartida
     __shared__ int Nds[TILE_WIDTH][TILE_WIDTH];							//se establecen las submatrices y quedan en memoria compartida
 
-    int Row = blockIdx.y * TILE_WIDTH + threadIdx.y;
-    int Col = blockIdx.x * TILE_WIDTH + threadIdx.x;
+    int bx = blockIdx.x;
+    int by = blockIdx.y;
+    int tx = threadIdx.x;
+    int ty = threadIdx.y;
+
+    int Row = by * TILE_WIDTH + ty;
+    int Col = bx * TILE_WIDTH + tx;
 
     mul[Row*col+Col] = 0;
 	int m,k;
