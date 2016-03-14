@@ -5,9 +5,9 @@
 #include <cuda.h>
 #include<fstream>
 
-#define row 3
+#define row 3					//multiplos de TILE_WIDTH
 #define col 3
-#define TILE_WIDTH 32
+#define TILE_WIDTH 32			//tamaño de las submatrices,
 
 int llenarMatriz(int *matriz){
 	
@@ -23,46 +23,26 @@ int llenarMatriz(int *matriz){
 }
 __global__ void multiplicarMatrices(int *matriz1, int *matriz2, int *mul){
 
-	__shared__ int Mds[TILE_WIDTH][TILE_WIDTH];
-    __shared__ int Nds[TILE_WIDTH][TILE_WIDTH];
+	__shared__ int Mds[TILE_WIDTH][TILE_WIDTH];							//se establecen las submatrices y quedan en memoria compartida
+    __shared__ int Nds[TILE_WIDTH][TILE_WIDTH];							//se establecen las submatrices y quedan en memoria compartida
 
-    int bx = blockIdx.x;
-    int by = blockIdx.y;
-    int tx = threadIdx.x;
-    int ty = threadIdx.y;
+    int Row = blockIdx.y * TILE_WIDTH + threadIdx.y;
+    int Col = blockIdx.x * TILE_WIDTH + threadIdx.x;
 
-    int Row = by * TILE_WIDTH + ty;
-    int Col = bx * TILE_WIDTH + tx;
-
-    float Pvalue = 0;
+    mul[Row*col+Col] = 0;
 	int m,k;
     for(m = 0; m < col / TILE_WIDTH; m=m+1){
-		Mds[ty][tx] = matriz1[Row*col + m*TILE_WIDTH + tx];
-		Nds[ty][tx] = matriz2[(m*TILE_WIDTH + ty) * col + Col];
-		__syncthreads();
+		Mds[ty][tx] = matriz1[Row*col + m*TILE_WIDTH + tx];				//se escriben los valores de memoria global a memoria compartida
+		Nds[ty][tx] = matriz2[(m*TILE_WIDTH + ty) * col + Col];			//se escriben los valores de memoria global a memoria compartida
+		__syncthreads();												//después de que se hayan escrito las matrices en memoria compartida, se estandariza el tiempo de los hilos para poder hacer la multiplicación
 
 		for(k = 0; k < TILE_WIDTH; k=k+1){
-			Pvalue += Mds[ty][k] * Nds[k][tx];	    
+			mul[Row*col+Col = mul[Row*col+Col + Mds[ty][k] * Nds[k][tx];//se guarda el resultado parcial de la operación de memoria compartida a memoria global
 		}
-		__syncthreads();
+		__syncthreads();												//se espera que cada uno de los hilos realiza la operación.
     }
-    mul[Row*col+Col] = Pvalue;
-	
+  
     
-}
-
-int testValues(int *A, int *B, int width){
-
-    for(int i = 0; i < width; ++i){
-        for(int j = 0; j < width; ++j){
-            if(A[(i*width)+j]!=B[(i*width)+j]){
-                printf("Mal Cálculo...\n");
-                return 0;
-            }
-        }
-    }
-    printf("Buen Cálculo ...\n");
-    return 0;
 }
 
 int main ()
@@ -122,12 +102,12 @@ int main ()
 
     // printf("\n");
 
-    for (i=0;i<row;i=i+1)
-    {
-        printf("\n");
-        for (j=0;j<col;j=j+1)
-            printf("\t%d", total_mul[i*col+j] );
-    }
+    //for (i=0;i<row;i=i+1)
+    //{
+        //printf("\n");
+        //for (j=0;j<col;j=j+1)
+            //printf("\t%d", total_mul[i*col+j] );
+    //}
 	
 	//testValues(total_mul,d_z,col);
 
