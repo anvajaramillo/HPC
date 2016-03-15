@@ -42,7 +42,7 @@ __global__ void multiplicarMatrices(int *matriz1, int *matriz2, int *mul){
 		__syncthreads();												//después de que se hayan escrito las matrices en memoria compartida, se estandariza el tiempo de los hilos para poder hacer la multiplicación
 
 		for(k = 0; k < TILE_WIDTH; k=k+1){
-			mul[Row*col+Col = mul[Row*col+Col + Mds[ty][k] * Nds[k][tx];//se guarda el resultado parcial de la operación de memoria compartida a memoria global
+			mul[Row*col+Col] = mul[Row*col+Col] + Mds[ty][k] * Nds[k][tx];//se guarda el resultado parcial de la operación de memoria compartida a memoria global
 		}
 		__syncthreads();												//se espera que cada uno de los hilos realiza la operación.
     }
