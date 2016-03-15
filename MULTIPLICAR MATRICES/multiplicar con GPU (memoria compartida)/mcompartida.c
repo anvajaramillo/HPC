@@ -5,8 +5,8 @@
 #include <cuda.h>
 #include<fstream>
 
-#define row 3					//multiplos de TILE_WIDTH
-#define col 3
+#define row 32					//multiplos de TILE_WIDTH
+#define col 32
 #define TILE_WIDTH 32			//tamaño de las submatrices,
 
 int llenarMatriz(int *matriz){
