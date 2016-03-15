@@ -29,7 +29,7 @@ Tamaño del vector| Tiempo de CPU| Tiempo de GPU
 
 
 Tamaño del vector| Aceleracion
--| -| -
+-| -
 1.000.000| 1,33540724
 5.000.000| 1,411218895
 10.000.000| 1,425698052
