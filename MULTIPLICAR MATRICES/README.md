@@ -42,6 +42,6 @@ Gráficas de aceleración
 
 ![Aceleracion sin tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracionsintiling.PNG)
 
-![Aceleracion con tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracionsintiling.PNG)
+![Aceleracion con tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracioncontiling.PNG)
 
 ![Aceleracion con tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracion.PNG)
