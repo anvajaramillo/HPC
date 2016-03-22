@@ -8,6 +8,8 @@ En este trabajo vamos a realizar el codigo de dos algoritmos diferentes.
 En ambos casos se mide el tiempo que se tarda el realizar la suma, dados lo resultado podemos apreciar dos gráficas la primera nos muestra el tiempo que tarda cada algoritmo en realizar la operación y la segunda nos muestra la aceleración respecto al tamaño de las matrices, la cual va creciendo a medida que aumenta el tamaño.
 que aumenta el tamaño.
 
+Tiempos de ejeución
+
 Tamaño del vector | Tiempo de CPU | Tiempo de GPU
 ----- | ----- | -----
 1.000.000 | 0,002361 | 0,001768
@@ -27,6 +29,7 @@ Tamaño del vector | Tiempo de CPU | Tiempo de GPU
 
 ![Tiempos de ejecución](https://github.com/anvajaramillo/HPC/blob/master/SUMAR%20VECTORES/tiempos.PNG)
 
+Acelaración
 
 Tamaño del vector | Aceleracion
 ----- | -----
