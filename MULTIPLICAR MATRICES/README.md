@@ -60,5 +60,7 @@ Conclusiones
 * Los resultados de GPU sin tiling ocupa el segundo lugar; podemos comprobar que la técnica de paralelización promueve un mejor uso del tiempo, sin embargo, al poner los datos en memoria global ocasiona una pequeña latencia cuando se accede a los mismos.
 * Los resultados con CPU proporcionan el tiempo de ejecución más lento; dado que la resolución del algoritmo se basa en un procedimiento secuencial es decir desarrolla las tareas una después de otra, sin lugar a duda genera más demora al terminar la ejecución del algoritmo. Esta latencia no es de notar mucho cuando se trata de acceder a tamaños de matrices muy pequeños, sin embargo, al exigir un mayor esfuerzo se va viendo el crecimiento del tiempo de ejecución.
 * La aceleración aumenta al aumentar el tamaño del vector; esto se debe a la exigencia que va pidiendo el algoritmo; dado que si el tamaño de la matriz es más grande las operaciones que se deben de hacer son más complejas y requieren de más recursos. 
+
 	Matemáticamente sí tenemos el límite x=lim(ts→∞)⁡(ts/tp); donde x = aceleración; tp = tiempo ejecución GPU; tiempo ejecución CPU.
+
 	Reemplazando tendríamos x=⁡(∞/tp) lo que daría como resultado x=∞, comprobando que la aceleración aumenta exponencialmente al aumentar el tamaño del vector lo cual ocasiona tiempos de CPU muy grandes.
