@@ -1,14 +1,14 @@
-#MULTIPLICAR MATRICES CPU VS GPU
+﻿#MULTIPLICAR MATRICES CPU VS GPU
 
-En este trabajo vamos a realizar el codigo de tres algoritmos diferentes.
+En este trabajo vamos a realizar el código de tres algoritmos diferentes.
 
 * El primero está basado en el llenado de dos matrices y multiplicación de las mismas usando CPU.
 * El segundo está basado en el llenado de dos matrices usando CPU, y la multiplicación de las mismas usando GPU solo con el uso de hilos y bloques.
 * El tercero está basado en el llenado de dos matrices usando CPU, y la multiplicación de las misma en GPU con el uso de hilos, bloques y memoria compartida.
 
-En todos los casos se mide el tiempo que se tarda en realizar la multiplicacion, dados lo resultado podemos apreciar dos gráficas la primera nos muestra el tiempo que tarda cada algoritmo en realizar la operación y la segunda nos muestra la aceleración respecto al tamaño de las matrices, la cual va creciendo a medida que aumenta el tamaño.
+En todos los casos se mide el tiempo que se tarda en realizar la multiplicación. Dados lo resultado podemos apreciar dos gráficas, la primera nos muestra el tiempo que tarda cada algoritmo en realizar la operación y la segunda nos muestra la aceleración respecto al tamaño de las matrices, la cual va creciendo a medida que aumenta el tamaño de la matriz.
 
-Tiempos de ejeución
+Tiempos de ejecución
 
 Tamaño de la matriz | Tiempo de CPU | Tiempo de GPU sin tiling | Tiempo de GPU con tiling
 ----- | ----- | ----- | -----
@@ -30,9 +30,9 @@ Gráficas de tiempo
 ![Tiempo GPU](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/tiempogpu.PNG)
 
 
-Acelaración
+Aceleración
 
-Tamaño de la matriz | Aceleración sin tiling | Acelaración con tiling
+Tamaño de la matriz | Aceleración sin tiling | Aceleración con tiling
 ----- | ----- | -----
 36864 | 118,8959108 | 214,6510067
 147456 | 258,1738149 | 505,3210604
@@ -47,18 +47,20 @@ Tamaño de la matriz | Aceleración sin tiling | Acelaración con tiling
 
 Gráficas de aceleración
 
-![Aceleracion sin tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracionsintiling.PNG)
+![Aceleración sin tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracionsintiling.PNG)
 
-![Aceleracion con tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracioncontiling.PNG)
+![Aceleración con tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracioncontiling.PNG)
 
-![Aceleracion](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracion.PNG)
+![Aceleración](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracion.PNG)
 
 
 Conclusiones
 
-* Los resultados de GPU con uso de la técnica tiling (memoria compartida) son los más óptimos; sus tiempos se originan gracias al proceso de acceder lo menos posible a memoria global, lo cual aumenta la eficiencia de ejecución; es decir, al utilizar el proceso de poner los datos en memoria compartida estamos brindando un acceso de datos más rápido, además se continua utlizando el método de paralelización con hilos y bloques que ayudan a realizar varias tareas al mismo tiempo optimizando el uso del tiempo.
-* Los resultados de GPU sin tiling ocupa el segundo lugar; podemos comprobar la técnica de paralelización promueve un mejor uso del tiempo sin embargo al poner los datos en memoria global ocasiona una pequeña latencia al acceder a los mismos.
-* Los resultados con CPU proporcionan el tiempo de ejecución más lento; dado que la resolución del algoritmo se basa en un procedimiento secuencial es decir desarrollar tareas una después de otra sin lugar a duda genera más demora al terminar la ejecución del algoritmo. Esta latencia no es de notar mucho cuando se trata de acceder a tamaños de vectores muy pequeños sin embargor al exijir un mayor esfuerzo se va viendo el crecimiento del tiempo de ejecución.
-* La aceleración aumenta al aumentar el tamaño del vector; esto se debe a la exigencia que va pidiendo el algoritmo; dado que si el tamaño del vector es más grande la operaciones que se deben de hacer son más complejas y requieren de más recursos. 
-Matemáticamente si tenemos el límite x=lim(ts→∞)⁡(ts/tp); donde x = aceleración; tp = tiempo ejecución GPU; tiempo ejecución CPU.
-reemplazando tendríamos x=⁡(∞/tp) lo que daría como resultado x=∞, comprobando que la aceleración aumenta exponencialmente al aumentar el tamaño del vector lo cual ocasiona tiempos de CPU muy grandes.
+* Los resultados de GPU con uso de la técnica tiling (memoria compartida) son los más óptimos; sus tiempos se originan gracias al proceso de acceder lo menos posible a memoria global, lo cual aumenta el aprovechamiento de recursos y maximizar la eficiencia de ejecución; es decir, al utilizar el proceso de poner los datos en memoria compartida estamos brindando un acceso de datos más rápido, además se continua utilizando el método de paralelización con hilos y bloques que ayudan a realizar varias tareas al mismo tiempo optimizando el uso  del tiempo.
+* Los resultados de GPU sin tiling ocupa el segundo lugar; podemos comprobar que la técnica de paralelización promueve un mejor uso del tiempo, sin embargo, al poner los datos en memoria global ocasiona una pequeña latencia cuando se accede a los mismos.
+* Los resultados con CPU proporcionan el tiempo de ejecución más lento; dado que la resolución del algoritmo se basa en un procedimiento secuencial es decir desarrolla las tareas una después de otra sin lugar a duda genera más demora al terminar la ejecución del algoritmo. Esta latencia no es de notar mucho cuando se trata de acceder a tamaños de matrices muy pequeños, sin embargo, al exigir un mayor esfuerzo se va viendo el crecimiento del tiempo de ejecución.
+* La aceleración aumenta al aumentar el tamaño del vector; esto se debe a la exigencia que va pidiendo el algoritmo; dado que si el tamaño de la matriz es más grande las operaciones que se deben de hacer son más complejas y requieren de más recursos. 
+
+Matemáticamente sí tenemos el límite x=lim(ts→∞)⁡(ts/tp); donde x = aceleración; tp = tiempo ejecución GPU; tiempo ejecución CPU.
+
+Reemplazando tendríamos x=⁡(∞/tp) lo que daría como resultado x=∞, comprobando que la aceleración aumenta exponencialmente al aumentar el tamaño del vector lo cual ocasiona tiempos de CPU muy grandes.
