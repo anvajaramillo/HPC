@@ -37,3 +37,11 @@ Tamaño de la matriz | Aceleración sin tiling | Acelaración con tiling
 2310144 | 256,9169318 | 801,309788
 2985984 | 313,3437698 | 983,1191752
 3686400 | 382,8837872 | 1228,838903
+
+Gráficas de aceleración
+
+![Aceleracion sin tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracionsintiling.PNG)
+
+![Aceleracion con tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracionsintiling.PNG)
+
+![Aceleracion con tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracion.PNG)
