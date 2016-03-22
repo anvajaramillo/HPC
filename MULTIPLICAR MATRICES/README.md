@@ -44,4 +44,10 @@ Gráficas de aceleración
 
 ![Aceleracion con tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracioncontiling.PNG)
 
-![Aceleracion con tiling](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracion.PNG)
+![Aceleracion](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracion.PNG)
+
+Gráficas de tiempo
+
+![Tiempo CPU](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/tiempocpu.PNG)
+
+![Tiempo GPU](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/tiempogpu.PNG)
