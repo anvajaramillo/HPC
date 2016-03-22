@@ -23,6 +23,13 @@ Tamaño de la matriz | Tiempo de CPU | Tiempo de GPU sin tiling | Tiempo de GPU 
 2985984 | 33,566638 | 0,107124 | 0,034143
 3686400 | 56,18743 | 0,146748 | 0,045724
 
+Gráficas de tiempo
+
+![Tiempo CPU](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/tiempocpu.PNG)
+
+![Tiempo GPU](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/tiempogpu.PNG)
+
+
 Acelaración
 
 Tamaño de la matriz | Aceleración sin tiling | Acelaración con tiling
@@ -46,8 +53,3 @@ Gráficas de aceleración
 
 ![Aceleracion](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/aceleracion.PNG)
 
-Gráficas de tiempo
-
-![Tiempo CPU](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/tiempocpu.PNG)
-
-![Tiempo GPU](https://github.com/anvajaramillo/HPC/blob/master/MULTIPLICAR%20MATRICES/tiempogpu.PNG)
