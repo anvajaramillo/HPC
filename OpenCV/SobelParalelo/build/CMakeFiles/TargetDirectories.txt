@@ -1,1 +1,1 @@
-/home/hera_hpccourse/Angie/OpenCV/SobelParalelo/build/CMakeFiles/sobel.dir
+/home/hera_hpccourse/Angie/HPC/OpenCV/SobelParalelo/build/CMakeFiles/sobel.dir

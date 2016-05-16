@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/grises.cpp
+/home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/grises.cpp
 cv.h
 -
 highgui.h

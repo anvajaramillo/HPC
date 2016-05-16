@@ -1,1 +1,1 @@
-/home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/build/CMakeFiles/grises.dir
+/home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/build/CMakeFiles/grises.dir

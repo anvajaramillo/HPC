@@ -21,7 +21,7 @@ int main(int argc, char **argv){
   
   imshow("Image Color",image);
   imshow("Image Gray",gray_image_opencv);
-  imshow("Image Gray",abs_grad_x);
+  imshow("Image Sobel",abs_grad_x);
   
   waitKey(0);
   

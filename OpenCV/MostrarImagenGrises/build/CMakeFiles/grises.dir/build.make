@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises
+CMAKE_SOURCE_DIR = /home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/build
+CMAKE_BINARY_DIR = /home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/grises.dir/depend.make
@@ -54,17 +54,17 @@ include CMakeFiles/grises.dir/flags.make
 
 CMakeFiles/grises.dir/grises.cpp.o: CMakeFiles/grises.dir/flags.make
 CMakeFiles/grises.dir/grises.cpp.o: ../grises.cpp
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building CXX object CMakeFiles/grises.dir/grises.cpp.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grises.dir/grises.cpp.o -c /home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/grises.cpp
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_FLAGS) -o CMakeFiles/grises.dir/grises.cpp.o -c /home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/grises.cpp
 
 CMakeFiles/grises.dir/grises.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/grises.dir/grises.cpp.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/grises.cpp > CMakeFiles/grises.dir/grises.cpp.i
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -E /home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/grises.cpp > CMakeFiles/grises.dir/grises.cpp.i
 
 CMakeFiles/grises.dir/grises.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/grises.dir/grises.cpp.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/grises.cpp -o CMakeFiles/grises.dir/grises.cpp.s
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_FLAGS) -S /home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/grises.cpp -o CMakeFiles/grises.dir/grises.cpp.s
 
 CMakeFiles/grises.dir/grises.cpp.o.requires:
 .PHONY : CMakeFiles/grises.dir/grises.cpp.o.requires
@@ -144,6 +144,6 @@ CMakeFiles/grises.dir/clean:
 .PHONY : CMakeFiles/grises.dir/clean
 
 CMakeFiles/grises.dir/depend:
-	cd /home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises /home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises /home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/build /home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/build /home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/build/CMakeFiles/grises.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises /home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises /home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/build /home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/build /home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/build/CMakeFiles/grises.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/grises.dir/depend
 

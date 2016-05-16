@@ -17,11 +17,9 @@ int main(int argc, char **argv){
   
   namedWindow("Image Color", WINDOW_NORMAL);
   namedWindow("Image Gray", WINDOW_NORMAL);
-  namedWindow("Image Sobel", WINDOW_NORMAL);
   
   imshow("Image Color",image);
   imshow("Image Gray",gray_image_opencv);
-  imshow("Image Sobel",abs_grad_x);
   
   waitKey(0);
   

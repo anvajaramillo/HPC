@@ -4,6 +4,7 @@
 #include <time.h>
 #include <cuda.h>
 #include <math.h>
+#include <time.h>
 
 #define RED 2
 #define GREEN 1
@@ -89,6 +90,8 @@ int main(int argc, char **argv){
 	cudaMalloc((void**)&d_maskt,sizeof(char)*9);
 
 	h_imageNormal = image.data;
+	
+	clock_t start = clock(); 
 
 	cudaMemcpy(d_imageNormal,h_imageNormal,size, cudaMemcpyHostToDevice);
 	cudaMemcpy(d_mask,h_mask,sizeof(char)*9,cudaMemcpyHostToDevice);
@@ -107,7 +110,9 @@ int main(int argc, char **argv){
 	cudaMemcpy(h_imageGray,d_imageGray,sizeGray,cudaMemcpyDeviceToHost);
 	cudaMemcpy(h_imageSobel,d_imageSobel,sizeGray,cudaMemcpyDeviceToHost);
 
-	Mat gray_image;
+	printf("%f\n", ((double)clock() - start) / CLOCKS_PER_SEC);
+
+	/*Mat gray_image;
     gray_image.create(height,width,CV_8UC1);
     gray_image.data = h_imageGray;
 
@@ -124,13 +129,14 @@ int main(int argc, char **argv){
     imshow("Sobel Image OpenCV",sobel_image);
 
     waitKey(0);
-
+*/
     cudaFree(d_imageNormal);
     cudaFree(d_imageGray);
     cudaFree(d_imageSobel);
     cudaFree(d_imageSobelX);
     cudaFree(d_imageSobelY);
     cudaFree(d_mask);
+    cudaFree(d_maskt);
 
     //free(h_imageNormal);
     //free(h_imageGray);

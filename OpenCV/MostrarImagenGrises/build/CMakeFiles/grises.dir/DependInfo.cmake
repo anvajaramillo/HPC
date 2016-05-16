@@ -4,7 +4,7 @@ SET(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 SET(CMAKE_DEPENDS_CHECK_CXX
-  "/home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/grises.cpp" "/home/hera_hpccourse/Angie/OpenCV/MostrarImagenGrises/build/CMakeFiles/grises.dir/grises.cpp.o"
+  "/home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/grises.cpp" "/home/hera_hpccourse/Angie/HPC/OpenCV/MostrarImagenGrises/build/CMakeFiles/grises.dir/grises.cpp.o"
   )
 SET(CMAKE_CXX_COMPILER_ID "GNU")
 
