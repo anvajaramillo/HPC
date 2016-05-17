@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project( SobelParalelo )
+project( SobelParaleloGlobal )
 find_package( OpenCV REQUIRED )
 find_package( CUDA REQUIRED )
 set(CUDA_NVCC_FLAGS ${CUDA_NVCC_FLAGS}; -O3; -arch=compute_52)
