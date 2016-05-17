@@ -36,9 +36,13 @@ __global__ void gray(unsigned char *imageNormal, int width, int height, unsigned
 	}
 }
 
-__global__ void sobelX_Y(unsigned char *imageGray, int width, int height, unsigned int maskWidth, char mask, unsigned char *imageSobel){
+__global__ void sobelX(unsigned char *imageGray, int width, int height, unsigned int maskWidth, unsigned char *imageSobel){
 	__shared__ float N_ds[TILE_SIZE + MASK_WIDTH - 1][TILE_SIZE+ MASK_WIDTH - 1];			//se establecen la submatriz y queda en memoria compartida
+																																										//el tamaño del array en memoria global debe ser mas largo que el vector normal para darle espacio a los elementos de la izquierda, centro y derecha en total es TILE_SIZE + MASK_WIDTH - 1
     int n = maskWidth/2;
+    
+    //------Cargar los elementos de la matriz de la matriz de entrada en memoria compartida------
+    //Cargar elementos izquierda derecha
     int dest = threadIdx.y*TILE_SIZE+threadIdx.x;
 	int destY = dest / (TILE_SIZE+MASK_WIDTH-1);
 	int destX = dest % (TILE_SIZE+MASK_WIDTH-1);
@@ -46,12 +50,12 @@ __global__ void sobelX_Y(unsigned char *imageGray, int width, int height, unsign
 	int srcX = blockIdx.x * TILE_SIZE + destX - n;
     int src = (srcY * width + srcX);
 	
-    if (srcY >= 0 && srcY < height && srcX >= 0 && srcX < width)
+    if (srcY >= 0 && srcY < height && srcX >= 0 && srcX < width)		//si srcY es negativo son elementos fantasmas, si srcX es negativo son elementos fantasmas
         N_ds[destY][destX] = imageGray[src];
     else
-        N_ds[destY][destX] = 0;
+        N_ds[destY][destX] = 0;					//asigna en 0 los elementos fantasmas
 
-    // Second batch loading
+    //Cargar elementos del centro
     dest = threadIdx.y * TILE_SIZE + threadIdx.x + TILE_SIZE * TILE_SIZE;
     destY = dest /(TILE_SIZE + MASK_WIDTH - 1);
 	destX = dest % (TILE_SIZE + MASK_WIDTH - 1);
@@ -66,17 +70,71 @@ __global__ void sobelX_Y(unsigned char *imageGray, int width, int height, unsign
             N_ds[destY][destX] = 0;
     }
     __syncthreads();
+    //------Termina de cargar los elementos de la matriz de la matriz de entrada en memoria compartida------
 
+		//-----llenamos la matriz de salida
     int accum = 0;
     int y, x;
     for (y = 0; y < maskWidth; y++)
         for (x = 0; x < maskWidth; x++)
-            accum += N_ds[threadIdx.y + y][threadIdx.x + x] * mask[y * maskWidth + x];
+            accum += N_ds[threadIdx.y + y][threadIdx.x + x] * d_mask[y * maskWidth + x];
     y = blockIdx.y * TILE_SIZE + threadIdx.y;
     x = blockIdx.x * TILE_SIZE + threadIdx.x;
     if (y < height && x < width)
         imageSobel[(y * width + x)] = clamp(accum);
     __syncthreads();
+    //-----terminamos de llenar la matriz de salida
+
+}
+
+__global__ void sobelY(unsigned char *imageGray, int width, int height, unsigned int maskWidth, unsigned char *imageSobel){
+	__shared__ float N_ds[TILE_SIZE + MASK_WIDTH - 1][TILE_SIZE+ MASK_WIDTH - 1];			//se establecen la submatriz y queda en memoria compartida
+																																										//el tamaño del array en memoria global debe ser mas largo que el vector normal para darle espacio a los elementos de la izquierda, centro y derecha en total es TILE_SIZE + MASK_WIDTH - 1
+    int n = maskWidth/2;
+    
+    //------Cargar los elementos de la matriz de la matriz de entrada en memoria compartida------
+    //Cargar elementos izquierda derecha
+    int dest = threadIdx.y*TILE_SIZE+threadIdx.x;
+	int destY = dest / (TILE_SIZE+MASK_WIDTH-1);
+	int destX = dest % (TILE_SIZE+MASK_WIDTH-1);
+    int srcY = blockIdx.y * TILE_SIZE + destY - n;
+	int srcX = blockIdx.x * TILE_SIZE + destX - n;
+    int src = (srcY * width + srcX);
+	
+    if (srcY >= 0 && srcY < height && srcX >= 0 && srcX < width)		//si srcY es negativo son elementos fantasmas, si srcX es negativo son elementos fantasmas
+        N_ds[destY][destX] = imageGray[src];
+    else
+        N_ds[destY][destX] = 0;					//asigna en 0 los elementos fantasmas
+
+    //Cargar elementos del centro
+    dest = threadIdx.y * TILE_SIZE + threadIdx.x + TILE_SIZE * TILE_SIZE;
+    destY = dest /(TILE_SIZE + MASK_WIDTH - 1);
+	destX = dest % (TILE_SIZE + MASK_WIDTH - 1);
+    srcY = blockIdx.y * TILE_SIZE + destY - n;
+    srcX = blockIdx.x * TILE_SIZE + destX - n;
+    src = (srcY * width + srcX);
+	
+    if (destY < TILE_SIZE + MASK_WIDTH - 1) {
+        if (srcY >= 0 && srcY < height && srcX >= 0 && srcX < width)
+            N_ds[destY][destX] = imageGray[src];
+        else
+            N_ds[destY][destX] = 0;
+    }
+    __syncthreads();
+    //------Termina de cargar los elementos de la matriz de la matriz de entrada en memoria compartida------
+
+		//-----llenamos la matriz de salida
+    int accum = 0;
+    int y, x;
+    for (y = 0; y < maskWidth; y++)
+        for (x = 0; x < maskWidth; x++)
+            accum += N_ds[threadIdx.y + y][threadIdx.x + x] * d_maskt[y * maskWidth + x];
+    y = blockIdx.y * TILE_SIZE + threadIdx.y;
+    x = blockIdx.x * TILE_SIZE + threadIdx.x;
+    if (y < height && x < width)
+        imageSobel[(y * width + x)] = clamp(accum);
+    __syncthreads();
+    //-----terminamos de llenar la matriz de salida
 
 }
 
@@ -133,14 +191,14 @@ int main(int argc, char **argv){
 
 	gray<<<dimGrid,dimBlock>>>(d_imageNormal,width,height,d_imageGray);
 	cudaDeviceSynchronize();
-	sobelX_Y<<<dimGrid,dimBlock>>>(d_imageGray,width,height,MASK_WIDTH,d_mask,d_imageSobelX);
-	sobelX_Y<<<dimGrid,dimBlock>>>(d_imageGray,width,height,MASK_WIDTH,d_maskt,d_imageSobelY);
+	sobelX<<<dimGrid,dimBlock>>>(d_imageGray,width,height,MASK_WIDTH,d_imageSobelX);
+	sobelY<<<dimGrid,dimBlock>>>(d_imageGray,width,height,MASK_WIDTH,d_imageSobelY);
 	sobel<<<dimGrid,dimBlock>>>(d_imageSobelX,d_imageSobelY,width,height,d_imageSobel);
 	
 	cudaMemcpy(h_imageGray,d_imageGray,sizeGray,cudaMemcpyDeviceToHost);
 	cudaMemcpy(h_imageSobel,d_imageSobel,sizeGray,cudaMemcpyDeviceToHost);
 
-	printf("%f\n", ((double)clock() - start) / CLOCKS_PER_SEC);
+	printf("%f;\n", ((double)clock() - start) / CLOCKS_PER_SEC);
 
 	  Mat gray_image;
     gray_image.create(height,width,CV_8UC1);

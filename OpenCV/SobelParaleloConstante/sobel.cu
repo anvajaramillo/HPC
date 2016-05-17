@@ -35,7 +35,7 @@ __global__ void gray(unsigned char *imageNormal, int width, int height, unsigned
 	}
 }
 
-__global__ void sobelX_Y(unsigned char *imageGray, int width, int height, unsigned int maskWidth, char mask, unsigned char *imageSobel){
+__global__ void sobelX(unsigned char *imageGray, int width, int height, unsigned int maskWidth, unsigned char *imageSobel){
 	unsigned int row = blockIdx.y*blockDim.y+threadIdx.y;
 	unsigned int col = blockIdx.x*blockDim.x+threadIdx.x;
 
@@ -46,7 +46,26 @@ __global__ void sobelX_Y(unsigned char *imageGray, int width, int height, unsign
 	for(int i = 0; i < maskWidth; i++){
 		for(int j = 0; j < maskWidth; j++){
 			if((n_start_point_col+j >= 0 && n_start_point_col+j < width) && (n_start_point_row+i >= 0 && n_start_point_row+i < height)){
-				value += imageGray[(n_start_point_row+i)*width+(n_start_point_col+j)] * mask[i*maskWidth+j];
+				value += imageGray[(n_start_point_row+i)*width+(n_start_point_col+j)] * d_mask[i*maskWidth+j];
+			}
+		}
+	}
+	imageSobel[row*width+col] = clamp(value);
+
+}
+
+__global__ void sobelY(unsigned char *imageGray, int width, int height, unsigned int maskWidth, unsigned char *imageSobel){
+	unsigned int row = blockIdx.y*blockDim.y+threadIdx.y;
+	unsigned int col = blockIdx.x*blockDim.x+threadIdx.x;
+
+	int value = 0;
+	int n_start_point_row = row - (maskWidth/2);
+	int n_start_point_col = col - (maskWidth/2);
+
+	for(int i = 0; i < maskWidth; i++){
+		for(int j = 0; j < maskWidth; j++){
+			if((n_start_point_col+j >= 0 && n_start_point_col+j < width) && (n_start_point_row+i >= 0 && n_start_point_row+i < height)){
+				value += imageGray[(n_start_point_row+i)*width+(n_start_point_col+j)] * d_maskt[i*maskWidth+j];
 			}
 		}
 	}
@@ -107,15 +126,15 @@ int main(int argc, char **argv){
 
 	gray<<<dimGrid,dimBlock>>>(d_imageNormal,width,height,d_imageGray);
 	cudaDeviceSynchronize();
-	sobelX_Y<<<dimGrid,dimBlock>>>(d_imageGray,width,height,MASK_WIDTH,d_mask,d_imageSobelX);
-	sobelX_Y<<<dimGrid,dimBlock>>>(d_imageGray,width,height,MASK_WIDTH,d_maskt,d_imageSobelY);
+	sobelX<<<dimGrid,dimBlock>>>(d_imageGray,width,height,MASK_WIDTH,d_imageSobelX);
+	sobelY<<<dimGrid,dimBlock>>>(d_imageGray,width,height,MASK_WIDTH,d_imageSobelY);
 	sobel<<<dimGrid,dimBlock>>>(d_imageSobelX,d_imageSobelY,width,height,d_imageSobel);
 	
 	cudaMemcpy(h_imageGray,d_imageGray,sizeGray,cudaMemcpyDeviceToHost);
 	cudaMemcpy(h_imageSobel,d_imageSobel,sizeGray,cudaMemcpyDeviceToHost);
 
-	printf("%f\n", ((double)clock() - start) / CLOCKS_PER_SEC);
-
+	printf("%f;\n", ((double)clock() - start) / CLOCKS_PER_SEC);
+	
 	  Mat gray_image;
     gray_image.create(height,width,CV_8UC1);
     gray_image.data = h_imageGray;
