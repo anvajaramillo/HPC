@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/hera_hpccourse/Angie/HPC/OpenCV/SobelSecuencial/sobel.cpp
+/home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelSecuencial/sobel.cpp
 cv.h
 -
 highgui.h

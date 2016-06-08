@@ -1,1 +1,3 @@
-/home/hera_hpccourse/Angie/HPC/OpenCV/SobelSecuencial/build/CMakeFiles/sobel.dir
+/home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelSecuencial/build/CMakeFiles/edit_cache.dir
+/home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelSecuencial/build/CMakeFiles/rebuild_cache.dir
+/home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelSecuencial/build/CMakeFiles/sobel.dir
