@@ -137,18 +137,18 @@ int main(int argc, char **argv)
     h_nosupmax = (unsigned char*)malloc(sizeGray);
 
     cudaMalloc((void**)&d_dataRawImage,size);
-    cudaMalloc((void**)&d_imgOutput,size);
-    cudaMalloc((void**)&d_suavizada,size);
-    cudaMalloc((void**)&d_imgSobel,size);
-    cudaMalloc((void**)&d_nosupmax,size);
-    cudaMalloc((void**)&d_sobelOutputX,size);
-    cudaMalloc((void**)&d_sobelOutputY,size);
+    cudaMalloc((void**)&d_imgOutput,sizeGray);
+    cudaMalloc((void**)&d_suavizada,sizeGray);
+    cudaMalloc((void**)&d_imgSobel,sizeGray);
+    cudaMalloc((void**)&d_nosupmax,sizeGray);
+    cudaMalloc((void**)&d_sobelOutputX,sizeGray);
+    cudaMalloc((void**)&d_sobelOutputY,sizeGray);
     cudaMalloc((void**)&d_M,sizeof(char)*9);
     cudaMalloc((void**)&d_Mt,sizeof(char)*9);
     cudaMalloc((void**)&d_S,sizeof(char)*25);
 
     h_dataRawImage = image.data;
-
+	
     start = clock();
 
     cudaMemcpy(d_dataRawImage ,h_dataRawImage ,size, cudaMemcpyHostToDevice);
@@ -162,7 +162,8 @@ int main(int argc, char **argv)
     
     //Escala de Grises
     img2gray<<<dimGrid,dimBlock>>>(d_imgOutput, d_dataRawImage, width, height);
-    
+    cudaDeviceSynchronize();
+
     //Suavizado
     gauss<<<dimGrid,dimBlock>>>(d_suavizada, 5, d_S, d_imgOutput, width, height);
 
@@ -178,7 +179,7 @@ int main(int argc, char **argv)
 	//Supresión Máxima
 	NoSupreMax<<<dimGrid,dimBlock>>>(width,height,d_imgSobel,d_nosupmax);
 
-    cudaMemcpy(h_imgOutput,d_imgOutput,sizeGray,cudaMemcpyDeviceToHost);
+    cudaMemcpy(h_imgOutput,d_imgOutput,size,cudaMemcpyDeviceToHost);
     cudaMemcpy(h_suavizada,d_suavizada,sizeGray,cudaMemcpyDeviceToHost);
     cudaMemcpy(h_imgSobel,d_imgSobel,sizeGray,cudaMemcpyDeviceToHost);
     cudaMemcpy(h_nosupmax,d_nosupmax,sizeGray,cudaMemcpyDeviceToHost);
@@ -188,11 +189,11 @@ int main(int argc, char **argv)
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
 
     printf("%.10f\n",cpu_time_used);
-
+	
     Mat gray_image;
     gray_image.create(height,width,CV_8UC1);
     gray_image.data = h_imgOutput;
-
+	
     Mat suav_image;
     suav_image.create(height,width,CV_8UC1);
     suav_image.data = h_suavizada;
@@ -203,21 +204,21 @@ int main(int argc, char **argv)
     
     Mat nosupmax_image;
     nosupmax_image.create(height,width,CV_8UC1);
-    nosupmax_image.data = d_nosupmax;
+    nosupmax_image.data = h_nosupmax;
     
     namedWindow(imageName, WINDOW_NORMAL);
     namedWindow("Gray Image", WINDOW_NORMAL);
     namedWindow("Gray Image Suavizada", WINDOW_NORMAL);
     namedWindow("Sobel Image", WINDOW_NORMAL);
     namedWindow("No Supesion Image", WINDOW_NORMAL);
-
+    
     imshow(imageName,image);
-    imshow("Gray Image Suavizada", gray_image);
+    imshow("Gray Image", gray_image);
     imshow("Gray Image Suavizada", suav_image);
     imshow("Sobel Image", sobel_image);
     imshow("No Supesion Image", nosupmax_image);
 
-    waitKey(0);
+    waitKey(0); 
 
     cudaFree(d_dataRawImage); 
     cudaFree(d_imgOutput); 
@@ -226,6 +227,9 @@ int main(int argc, char **argv)
     cudaFree(d_nosupmax);
     cudaFree(d_sobelOutputX);
     cudaFree(d_sobelOutputY);
+    cudaFree(d_M);
+    cudaFree(d_Mt);
+    cudaFree(d_S);
 
     return 0;
 }

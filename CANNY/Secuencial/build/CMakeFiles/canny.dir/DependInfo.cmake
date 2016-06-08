@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/hera_hpccourse/Angie/HPC/CANNY/Secuencial/canny.cpp" "/home/hera_hpccourse/Angie/HPC/CANNY/Secuencial/build/CMakeFiles/canny.dir/canny.cpp.o"
+  "/home/judge_hpccourse/Angie/HPC/CANNY/Secuencial/canny.cpp" "/home/judge_hpccourse/Angie/HPC/CANNY/Secuencial/build/CMakeFiles/canny.dir/canny.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,6 +17,3 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
   )
-
-# Fortran module output directory.
-set(CMAKE_Fortran_TARGET_MODULE_DIR "")

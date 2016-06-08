@@ -194,33 +194,33 @@ int main(int argc, char **argv)
 
     printf("%.10f\n",cpu_time_used);
 
-		Mat gray_image;
-    gray_image.create(height,width,CV_8UC1);
-    gray_image.data = imgOutput;
+    //Mat gray_image;
+    //gray_image.create(height,width,CV_8UC1);
+    //gray_image.data = imgOutput;
     
-    Mat suav_image;
-    suav_image.create(height,width,CV_8UC1);
-    suav_image.data = suavizada;
+    //Mat suav_image;
+    //suav_image.create(height,width,CV_8UC1);
+    //suav_image.data = suavizada;
     
-    Mat sobel_image;
-    sobel_image.create(height,width,CV_8UC1);
-    sobel_image.data = imgSobel;
+    //Mat sobel_image;
+    //sobel_image.create(height,width,CV_8UC1);
+    //sobel_image.data = imgSobel;
     
-    Mat nosupmax_image;
-    nosupmax_image.create(height,width,CV_8UC1);
-    nosupmax_image.data = nosupmax;
+    //Mat nosupmax_image;
+    //nosupmax_image.create(height,width,CV_8UC1);
+    //nosupmax_image.data = nosupmax;
     
-    namedWindow(imageName, WINDOW_NORMAL);
-    namedWindow("Gray Image", WINDOW_NORMAL);
-    namedWindow("Gray Image Suavizada", WINDOW_NORMAL);
-    namedWindow("Sobel Image", WINDOW_NORMAL);
-    namedWindow("No Supesion Image", WINDOW_NORMAL);
+    //namedWindow(imageName, WINDOW_NORMAL);
+    //namedWindow("Gray Image", WINDOW_NORMAL);
+    //namedWindow("Gray Image Suavizada", WINDOW_NORMAL);
+    //namedWindow("Sobel Image", WINDOW_NORMAL);
+    //namedWindow("No Supesion Image", WINDOW_NORMAL);
     
-    imshow(imageName,image);
-    imshow("Gray Image", gray_image);
-    imshow("Gray Image Suavizada", suav_image);
-    imshow("Sobel Image", sobel_image);
-    imshow("No Supesion Image", nosupmax_image);
+    //imshow(imageName,image);
+    //imshow("Gray Image", gray_image);
+    //imshow("Gray Image Suavizada", suav_image);
+    //imshow("Sobel Image", sobel_image);
+    //imshow("No Supesion Image", nosupmax_image);
     
     waitKey(0);
     

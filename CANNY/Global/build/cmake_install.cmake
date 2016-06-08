@@ -1,4 +1,4 @@
-# Install script for directory: /home/hera_hpccourse/Angie/HPC/CANNY/Global
+# Install script for directory: /home/judge_hpccourse/Angie/HPC/CANNY/Global
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/hera_hpccourse/Angie/HPC/CANNY/Global/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/judge_hpccourse/Angie/HPC/CANNY/Global/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

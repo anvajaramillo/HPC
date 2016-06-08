@@ -1,3 +1,1 @@
-/home/hera_hpccourse/Angie/HPC/CANNY/Global/build/CMakeFiles/canny.dir
-/home/hera_hpccourse/Angie/HPC/CANNY/Global/build/CMakeFiles/edit_cache.dir
-/home/hera_hpccourse/Angie/HPC/CANNY/Global/build/CMakeFiles/rebuild_cache.dir
+/home/judge_hpccourse/Angie/HPC/CANNY/Global/build/CMakeFiles/canny.dir
