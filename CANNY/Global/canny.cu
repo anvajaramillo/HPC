@@ -179,7 +179,7 @@ int main(int argc, char **argv)
 	//Supresión Máxima
 	NoSupreMax<<<dimGrid,dimBlock>>>(width,height,d_imgSobel,d_nosupmax);
 
-    cudaMemcpy(h_imgOutput,d_imgOutput,size,cudaMemcpyDeviceToHost);
+    cudaMemcpy(h_imgOutput,d_imgOutput,sizeGray,cudaMemcpyDeviceToHost);
     cudaMemcpy(h_suavizada,d_suavizada,sizeGray,cudaMemcpyDeviceToHost);
     cudaMemcpy(h_imgSobel,d_imgSobel,sizeGray,cudaMemcpyDeviceToHost);
     cudaMemcpy(h_nosupmax,d_nosupmax,sizeGray,cudaMemcpyDeviceToHost);
@@ -189,7 +189,7 @@ int main(int argc, char **argv)
     cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
 
     printf("%.10f\n",cpu_time_used);
-	
+	/*
     Mat gray_image;
     gray_image.create(height,width,CV_8UC1);
     gray_image.data = h_imgOutput;
@@ -217,7 +217,7 @@ int main(int argc, char **argv)
     imshow("Gray Image Suavizada", suav_image);
     imshow("Sobel Image", sobel_image);
     imshow("No Supesion Image", nosupmax_image);
-
+*/
     waitKey(0); 
 
     cudaFree(d_dataRawImage); 

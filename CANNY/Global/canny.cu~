@@ -179,7 +179,7 @@ int main(int argc, char **argv)
 	//Supresión Máxima
 	NoSupreMax<<<dimGrid,dimBlock>>>(width,height,d_imgSobel,d_nosupmax);
 
-    cudaMemcpy(h_imgOutput,d_imgOutput,size,cudaMemcpyDeviceToHost);
+    cudaMemcpy(h_imgOutput,d_imgOutput,sizeGray,cudaMemcpyDeviceToHost);
     cudaMemcpy(h_suavizada,d_suavizada,sizeGray,cudaMemcpyDeviceToHost);
     cudaMemcpy(h_imgSobel,d_imgSobel,sizeGray,cudaMemcpyDeviceToHost);
     cudaMemcpy(h_nosupmax,d_nosupmax,sizeGray,cudaMemcpyDeviceToHost);
@@ -204,7 +204,7 @@ int main(int argc, char **argv)
     
     Mat nosupmax_image;
     nosupmax_image.create(height,width,CV_8UC1);
-    nosupmax_image.data = d_nosupmax;
+    nosupmax_image.data = h_nosupmax;
     
     namedWindow(imageName, WINDOW_NORMAL);
     namedWindow("Gray Image", WINDOW_NORMAL);

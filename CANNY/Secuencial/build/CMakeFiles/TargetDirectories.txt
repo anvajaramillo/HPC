@@ -1,1 +1,1 @@
-/home/judge_hpccourse/Angie/HPC/CANNY/Secuencial/build/CMakeFiles/canny.dir
+/home/hera_hpccourse/Angie/HPC/CANNY/Secuencial/build/CMakeFiles/canny.dir

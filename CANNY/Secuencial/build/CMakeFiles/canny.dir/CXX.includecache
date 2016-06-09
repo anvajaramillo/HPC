@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/judge_hpccourse/Angie/HPC/CANNY/Secuencial/canny.cpp
+/home/hera_hpccourse/Angie/HPC/CANNY/Secuencial/canny.cpp
 cv.h
 -
 highgui.h
@@ -63,6 +63,12 @@ opencv2/core/core.hpp
 /usr/local/include/opencv2/calib3d/opencv2/core/core.hpp
 opencv2/features2d/features2d.hpp
 /usr/local/include/opencv2/calib3d/opencv2/features2d/features2d.hpp
+opencv2/core/affine.hpp
+/usr/local/include/opencv2/calib3d/opencv2/core/affine.hpp
+
+/usr/local/include/opencv2/core/affine.hpp
+opencv2/core/core.hpp
+-
 
 /usr/local/include/opencv2/core/core.hpp
 opencv2/core/types_c.h
@@ -124,6 +130,8 @@ tmmintrin.h
 smmintrin.h
 -
 nmmintrin.h
+-
+immintrin.h
 -
 immintrin.h
 -
