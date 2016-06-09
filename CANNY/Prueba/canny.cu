@@ -70,33 +70,37 @@ __global__ void sobelGradX(unsigned char *imgOutput, int maskWidth, unsigned cha
 {
 	__shared__ float N_ds[TILE_SIZE][TILE_SIZE]; //se establecen la submatriz y queda en memoria compartida		
 		
-    int row = blockIdx.y*blockDim.y+threadIdx.y;
-    int col = blockIdx.x*blockDim.x+threadIdx.x;
-
-    int Pvalue = 0;
-    int N_start_point_row = row - (maskWidth/2);
-    int N_start_point_col = col - (maskWidth/2);
-    
     int y = blockIdx.y * TILE_SIZE + threadIdx.y;
     int x = blockIdx.x * TILE_SIZE + threadIdx.x;
     
-    N_ds[row][col] = imgInput[(y * width + x)];
-   __syncthreads();
-   
-   printf ("hola");
+    int bx = blockIdx.x;
+    int by = blockIdx.y;
+    int tx = threadIdx.x;
+    int ty = threadIdx.y;
 
-    if((row < height) && (col < width)){
+    int row = by * TILE_SIZE + ty;
+    int col = bx * TILE_SIZE + tx;
+    
+    int Pvalue = 0;
+    int N_start_point_row = row - (maskWidth/2);
+    int N_start_point_col = col - (maskWidth/2);
+
+    for(int m = 0; m < col / TILE_SIZE; m=m+1){
+    	
+    	N_ds[ty][tx] = imgInput[row*width + m*TILE_SIZE + tx];
+    	__syncthreads(); 
+    
         for(int i = 0; i < maskWidth; i++){
 					for(int j = 0; j < maskWidth; j++ ){
 							if((N_start_point_col + j >=0 && N_start_point_col + j < width)
 							        &&(N_start_point_row + i >=0 && N_start_point_row + i < height)){						    
-							    Pvalue += N_ds[threadIdx.y + i][threadIdx.x + j] * d_M[i*maskWidth+j];
-							    
+							    Pvalue += N_ds[N_start_point_row + i][N_start_point_col + j] * d_M[i*maskWidth+j];
 							}
 					}
-			}	
-			imgOutput[(y * width + x)] = clamp(Pvalue);
-			
+				}	
+				if (y < height && x < width)
+					imgOutput[(y * width + x)] = clamp(Pvalue);
+				__syncthreads(); 
     }    
     
 }
