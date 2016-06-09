@@ -1,1 +1,1 @@
-/home/hera_hpccourse/Angie/HPC/OpenCV/SobelSecuencial/build/CMakeFiles/sobel.dir
+/home/judge_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelSecuencial/build/CMakeFiles/sobel.dir

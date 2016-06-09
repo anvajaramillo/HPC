@@ -112,7 +112,7 @@ int main(int argc, char **argv){
 
 	printf("%f\n", ((double)clock() - start) / CLOCKS_PER_SEC);
 
-	/*Mat gray_image;
+	  Mat gray_image;
     gray_image.create(height,width,CV_8UC1);
     gray_image.data = h_imageGray;
 
@@ -129,7 +129,7 @@ int main(int argc, char **argv){
     imshow("Sobel Image OpenCV",sobel_image);
 
     waitKey(0);
-*/
+
     cudaFree(d_imageNormal);
     cudaFree(d_imageGray);
     cudaFree(d_imageSobel);

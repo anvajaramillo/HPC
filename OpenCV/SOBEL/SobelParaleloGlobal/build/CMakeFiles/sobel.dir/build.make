@@ -38,10 +38,10 @@ EQUALS = =
 CMAKE_EDIT_COMMAND = /usr/bin/ccmake
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal
+CMAKE_SOURCE_DIR = /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build
+CMAKE_BINARY_DIR = /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/sobel.dir/depend.make
@@ -55,17 +55,17 @@ include CMakeFiles/sobel.dir/flags.make
 CMakeFiles/sobel.dir/./sobel_generated_sobel.cu.o: CMakeFiles/sobel.dir/sobel_generated_sobel.cu.o.depend
 CMakeFiles/sobel.dir/./sobel_generated_sobel.cu.o: CMakeFiles/sobel.dir/sobel_generated_sobel.cu.o.cmake
 CMakeFiles/sobel.dir/./sobel_generated_sobel.cu.o: ../sobel.cu
-	$(CMAKE_COMMAND) -E cmake_progress_report /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build/CMakeFiles $(CMAKE_PROGRESS_1)
+	$(CMAKE_COMMAND) -E cmake_progress_report /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build/CMakeFiles $(CMAKE_PROGRESS_1)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold "Building NVCC (Device) object CMakeFiles/sobel.dir//./sobel_generated_sobel.cu.o"
-	cd /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build/CMakeFiles/sobel.dir && /usr/bin/cmake -E make_directory /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build/CMakeFiles/sobel.dir//.
-	cd /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build/CMakeFiles/sobel.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build/CMakeFiles/sobel.dir//./sobel_generated_sobel.cu.o -D generated_cubin_file:STRING=/home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build/CMakeFiles/sobel.dir//./sobel_generated_sobel.cu.o.cubin.txt -P /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build/CMakeFiles/sobel.dir//sobel_generated_sobel.cu.o.cmake
+	cd /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build/CMakeFiles/sobel.dir && /usr/bin/cmake -E make_directory /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build/CMakeFiles/sobel.dir//.
+	cd /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build/CMakeFiles/sobel.dir && /usr/bin/cmake -D verbose:BOOL=$(VERBOSE) -D build_configuration:STRING= -D generated_file:STRING=/home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build/CMakeFiles/sobel.dir//./sobel_generated_sobel.cu.o -D generated_cubin_file:STRING=/home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build/CMakeFiles/sobel.dir//./sobel_generated_sobel.cu.o.cubin.txt -P /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build/CMakeFiles/sobel.dir//sobel_generated_sobel.cu.o.cmake
 
 # Object files for target sobel
 sobel_OBJECTS =
 
 # External object files for target sobel
 sobel_EXTERNAL_OBJECTS = \
-"/home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build/CMakeFiles/sobel.dir/./sobel_generated_sobel.cu.o"
+"/home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build/CMakeFiles/sobel.dir/./sobel_generated_sobel.cu.o"
 
 sobel: CMakeFiles/sobel.dir/./sobel_generated_sobel.cu.o
 sobel: CMakeFiles/sobel.dir/build.make
@@ -130,6 +130,6 @@ CMakeFiles/sobel.dir/clean:
 .PHONY : CMakeFiles/sobel.dir/clean
 
 CMakeFiles/sobel.dir/depend: CMakeFiles/sobel.dir/./sobel_generated_sobel.cu.o
-	cd /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build /home/hera_hpccourse/Angie/HPC/OpenCV/SobelParaleloGlobal/build/CMakeFiles/sobel.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build /home/hera_hpccourse/Angie/HPC/OpenCV/SOBEL/SobelParaleloGlobal/build/CMakeFiles/sobel.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/sobel.dir/depend
 
